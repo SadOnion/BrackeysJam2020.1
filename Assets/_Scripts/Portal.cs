@@ -12,36 +12,44 @@ public class Portal : MonoBehaviour
     [SerializeField] float exitThrowPower;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Rigidbody2D body = collision.gameObject.GetComponent<Rigidbody2D>();
-        if(body.bodyType == RigidbodyType2D.Dynamic)
+        if (linkedPortal != null)
         {
-           body.bodyType = RigidbodyType2D.Kinematic;
-        }
-        else
-        {
-             body.bodyType = RigidbodyType2D.Dynamic;
-             body.AddForce(transform.up*exitThrowPower);
-        }
+            Rigidbody2D body = collision.gameObject.GetComponent<Rigidbody2D>();
+            if(body.bodyType == RigidbodyType2D.Dynamic)
+            {
+               body.bodyType = RigidbodyType2D.Kinematic;
+            }
+            else
+            {
+                 body.bodyType = RigidbodyType2D.Dynamic;
+                 body.AddForce(transform.up*exitThrowPower);
+            }
        
-        body.velocity  = -transform.up*transitionSpeed;
-        SpriteRenderer sr = collision.gameObject.GetComponent<SpriteRenderer>();
-        sr.maskInteraction = SpriteMaskInteraction.VisibleOutsideMask;
+            body.velocity  = -transform.up*transitionSpeed;
+            SpriteRenderer sr = collision.gameObject.GetComponent<SpriteRenderer>();
+            sr.maskInteraction = SpriteMaskInteraction.VisibleOutsideMask;
+
+        }
     }
 
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        Rigidbody2D body = collision.gameObject.GetComponent<Rigidbody2D>();
-        if(body.bodyType == RigidbodyType2D.Kinematic)
+        if (linkedPortal != null)
         {
-            Teleport(body);
-            collision.isTrigger=true;
-        }
-        else
-        {
-            SpriteRenderer sr = collision.gameObject.GetComponent<SpriteRenderer>();
-            sr.maskInteraction = SpriteMaskInteraction.None;
-            collision.isTrigger=false;
+            Rigidbody2D body = collision.gameObject.GetComponent<Rigidbody2D>();
+            if(body.bodyType == RigidbodyType2D.Kinematic)
+            {
+                Teleport(body);
+                collision.isTrigger=true;
+            }
+            else
+            {
+                SpriteRenderer sr = collision.gameObject.GetComponent<SpriteRenderer>();
+                sr.maskInteraction = SpriteMaskInteraction.None;
+                collision.isTrigger=false;
+            }
+
         }
     }
 

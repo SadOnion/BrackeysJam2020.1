@@ -5,12 +5,19 @@ using GameJam.CharController.Movement;
 
 public class InputHandler : MonoBehaviour
 {
+    CharacterSwitchHandler switchHandler;
+    MouseSkill mouseSkill;
+    private void Start()
+    {
+        mouseSkill = GameObject.FindObjectOfType<MouseSkill>();
+         switchHandler = GameObject.Find("CharacterSwitchingHandler").GetComponent<CharacterSwitchHandler>();
+    }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.LeftControl))
         {
-            var handlerRef = GameObject.Find("CharacterSwitchingHandler").GetComponent<CharacterSwitchHandler>();
-            handlerRef.ChangeFocus();
+           switchHandler.ChangeFocus();
+            mouseSkill.ChangeSkill();
         }
     }
 
@@ -23,5 +30,9 @@ public class InputHandler : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
             if (CharacterSwitchHandler.newTarget.groundCheck.IsOnGround())
                 CharacterSwitchHandler.newTarget.Jump();
+        if (Input.GetMouseButtonDown(0))
+        {
+            mouseSkill.skill();
+        }
     }
 }
