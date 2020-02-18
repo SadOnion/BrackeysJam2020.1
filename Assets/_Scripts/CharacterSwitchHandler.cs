@@ -8,6 +8,7 @@ public class CharacterSwitchHandler : MonoBehaviour
     public Movement boy;
     public Movement girl;
     public CameraBehaviour cam;
+    public static Movement newTarget;
 
     private Queue<Movement> focusQueue;
     // Start is called before the first frame update
@@ -18,22 +19,15 @@ public class CharacterSwitchHandler : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.LeftControl)) // TO DO this should be in input handler
-        {
-            ChangeFocus();
-        }
-    }
     private void InitializeQueue()
     {
         focusQueue = new Queue<Movement>();
         focusQueue.Enqueue(boy);
         focusQueue.Enqueue(girl);
     }
-    private void ChangeFocus()
+    public void ChangeFocus()
     {
-        Movement newTarget = focusQueue.Dequeue();
+        newTarget = focusQueue.Dequeue();
         newTarget.enabled=true;
         cam.ChangeTarget(newTarget.transform);
         focusQueue.Enqueue(newTarget);

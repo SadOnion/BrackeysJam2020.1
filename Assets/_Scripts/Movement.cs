@@ -6,34 +6,18 @@ namespace GameJam.CharController.Movement
 {
     public class Movement : MonoBehaviour
     {
-        /// <summary>
-        /// Velocity of the player.
-        /// </summary>
         private protected float currentVelocity = 1f;
 
-        /// <summary>
-        /// Jump force of the player
-        /// </summary>
         private protected float jumpForce = 1f;
 
-        /// <summary>
-        /// RidigBody of the player
-        /// </summary>
         private protected Rigidbody2D ridBody;
+
+        public GroundCheck groundCheck;
 
         private void Start()
         {
             ridBody = gameObject.GetComponent<Rigidbody2D>();
-        }
-
-        private void LateUpdate()                   // TODO: INPUT HANDLER
-        {
-            if (Input.GetKey(KeyCode.D))
-                MoveRight();
-            else if (Input.GetKey(KeyCode.A))
-                MoveLeft();
-            if (Input.GetKeyDown(KeyCode.Space))
-                Jump();
+            groundCheck = new GroundCheck(GetComponent<BoxCollider2D>());
         }
 
         /// <summary>

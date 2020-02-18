@@ -11,7 +11,11 @@ public class Teleporter : MonoBehaviour
         if (collision.isTrigger)
         {
              body.transform.position = desireLocation.position;
-             body.velocity = new Vector2(0,5*body.gravityScale);
+             
         }
+    }
+    public void ChangeDesireLocation(Transform newLocation)
+    {
+        desireLocation = newLocation;
     }
 }
