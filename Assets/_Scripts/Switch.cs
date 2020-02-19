@@ -19,14 +19,20 @@ public class Switch : MonoBehaviour,IFreezable
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-       pressed = true;
-        if(collision.isTrigger==false)entitiesOnSwitch++;
-        if (!freezed)
+        if(collision.isTrigger==false)
         {
-            spriteRenderer.sprite = onSprite;
-            OnPressed?.Invoke();
+              entitiesOnSwitch++;
+              if (!freezed)
+              {
+                  if(spriteRenderer.sprite != onSprite)
+                  {
+                      pressed = true;
+                      AudioManager.instance.Play("SwitchOn");
+                      spriteRenderer.sprite = onSprite;
+                      OnPressed?.Invoke();
+                  }
+              }
         }
-      
        
     }
     private void OnTriggerExit2D(Collider2D collision)
@@ -34,9 +40,13 @@ public class Switch : MonoBehaviour,IFreezable
         if(collision.isTrigger==false)entitiesOnSwitch--;
         if (entitiesOnSwitch <= 0 && !freezed)
         {
-           pressed = false;
-           spriteRenderer.sprite = offSprite;
-           OnUnpressed?.Invoke();
+           if(spriteRenderer.sprite != offSprite)
+            {
+                pressed = false;
+                AudioManager.instance.Play("SwitchOff");
+                spriteRenderer.sprite = offSprite;
+                OnUnpressed?.Invoke();
+            }
 
         }
         
@@ -54,9 +64,13 @@ public class Switch : MonoBehaviour,IFreezable
             freezed=false;
             if (entitiesOnSwitch <= 0 && !freezed)
             {
-                pressed = false;
-                spriteRenderer.sprite = offSprite;
-                OnUnpressed?.Invoke();
+                if(spriteRenderer.sprite != offSprite)
+                {
+                    pressed = false;
+                    AudioManager.instance.Play("SwitchOff");
+                    spriteRenderer.sprite = offSprite;
+                    OnUnpressed?.Invoke();
+                 }
 
             }
         }

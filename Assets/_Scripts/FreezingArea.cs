@@ -36,7 +36,7 @@ public class FreezingArea : MonoBehaviour
     {
         foreach (var item in objectsFrozen)
         {
-            item.UnFreeze();
+            item?.UnFreeze();
         }
     }
     

@@ -11,31 +11,34 @@ public class Portal : MonoBehaviour
     [SerializeField] float transitionSpeed;
     [SerializeField] float exitThrowPower;
     [SerializeField] Animator anim;
-    bool active=true;
+    bool passIn=true;
+    bool passOut=true;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         ITeleportable teleportable = collision.gameObject.GetComponent<ITeleportable>();
         if(teleportable != null)
         {
-            if (linkedPortal != null && active)
+            if (linkedPortal != null)
             {
                 Rigidbody2D body = collision.gameObject.GetComponent<Rigidbody2D>();
-                if(body.bodyType == RigidbodyType2D.Dynamic)
+                if(body.bodyType == RigidbodyType2D.Dynamic && passIn)
                 {
                    body.bodyType = RigidbodyType2D.Kinematic;
                    MouseSkill.canUseSkill=false;
-                    collision.isTrigger=true;
+                   collision.isTrigger=true;
                    body.velocity  = -transform.up*transitionSpeed;
-                   active=false;
+                   passIn=false;
                 }
-                else if (body.bodyType == RigidbodyType2D.Kinematic)
+                else if (body.bodyType == RigidbodyType2D.Kinematic && passOut)
                 {
                     body.bodyType = RigidbodyType2D.Dynamic;
                     body.AddForce(transform.up*exitThrowPower);
                     MouseSkill.canUseSkill=true;
-                    active=false;
+                    passIn=false;
+                    passOut=false;
                 }
-            
+                
                 SpriteRenderer sr = collision.gameObject.GetComponent<SpriteRenderer>();
                 if(sr!=null)sr.maskInteraction = SpriteMaskInteraction.VisibleOutsideMask;
 
@@ -63,7 +66,6 @@ public class Portal : MonoBehaviour
                     sr.maskInteraction = SpriteMaskInteraction.None;
                     anim.SetTrigger("Die");
                     linkedPortal.anim.SetTrigger("Die");
-                    active=false;
                     collision.isTrigger=false;
 
                 }
@@ -72,7 +74,11 @@ public class Portal : MonoBehaviour
 
         }
     }
-
+    public void RemoveMeFromPortalList()
+    {
+        MouseSkill mouseSkill = FindObjectOfType<MouseSkill>();
+        mouseSkill?.RemovePortal(this);
+    }
     private void Teleport(Rigidbody2D body)
     {
         body.transform.position = linkedPortal.spawnPoint.transform.position;
@@ -83,6 +89,8 @@ public class Portal : MonoBehaviour
     {
         linkedPortal = portal;
         portal.linkedPortal = this;
+        GetComponent<BoxCollider2D>().enabled = true;
+        linkedPortal.gameObject.GetComponent<BoxCollider2D>().enabled = true;
     }
     
 }

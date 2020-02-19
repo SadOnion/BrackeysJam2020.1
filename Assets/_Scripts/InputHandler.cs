@@ -19,6 +19,13 @@ public class InputHandler : MonoBehaviour
            switchHandler.ChangeFocus();
             mouseSkill.ChangeSkill();
         }
+        if (Input.GetMouseButtonDown(0))
+        {
+            if(MouseSkill.canUseSkill&& Vector2.Distance(CharacterSwitchHandler.newTarget.transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition)) < mouseSkill.skillRange)
+            {
+                mouseSkill.skill();
+            }
+        }
     }
 
     private void LateUpdate()
@@ -30,10 +37,6 @@ public class InputHandler : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
             if (CharacterSwitchHandler.newTarget.groundCheck.IsOnGround())
                 CharacterSwitchHandler.newTarget.Jump();
-        if (Input.GetMouseButtonDown(0))
-        {
-            if(MouseSkill.canUseSkill&& Vector2.Distance(CharacterSwitchHandler.newTarget.transform.position,Camera.main.ScreenToWorldPoint(Input.mousePosition))<mouseSkill.skillRange)
-            mouseSkill.skill();
-        }
+        
     }
 }
