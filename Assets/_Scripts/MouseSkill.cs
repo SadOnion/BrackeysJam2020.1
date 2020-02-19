@@ -9,8 +9,9 @@ public class MouseSkill : MonoBehaviour
     [SerializeField] GameObject freezeArea;
     GameObject placedFreezeArea;
     List<Portal> portalList;
+    public float skillRange=3f;
     public Action skill;
-
+    public static bool canUseSkill=true;
     private void Start()
     {
         skill = PlaceNewPortal;
@@ -23,9 +24,9 @@ public class MouseSkill : MonoBehaviour
         if(point == null)
         {
             Collider2D col = Physics2D.OverlapBox(mousePos,Vector2.one,0);
-            if(col != null)
+            if(col != null && col.attachedRigidbody != null && col.attachedRigidbody.bodyType==RigidbodyType2D.Static)
             {
-
+                
                 Vector3 spawnPoint = col.ClosestPoint(mousePos);
                 Vector3 dir = spawnPoint-mousePos;
                 RaycastHit2D info = Physics2D.Raycast(mousePos,dir,5f);
@@ -59,11 +60,12 @@ public class MouseSkill : MonoBehaviour
 
     private void AddPortal(Portal p)
     {
+        RemoveDestroyedPortals();
         portalList.Add(p);
         if(portalList.Count > 2)
         {
             portalList[1].Link(portalList[2]);
-            Destroy(portalList[0].gameObject);
+            portalList[0].gameObject.GetComponent<Animator>().SetTrigger("Die");
             portalList.RemoveAt(0);
         }
         if(portalList.Count > 1)
@@ -80,6 +82,13 @@ public class MouseSkill : MonoBehaviour
         else
         {
             skill = PlaceNewPortal;
+        }
+    }
+    public void RemoveDestroyedPortals()
+    {
+        for (int i = 0; i < portalList.Count; i++)
+        {
+            if(portalList[i] == null)portalList.RemoveAt(i);
         }
     }
 

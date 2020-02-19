@@ -7,7 +7,7 @@ public class FreezePosition : MonoBehaviour,IFreezable
     Rigidbody2D body;
     public void Freeze()
     {
-        body.bodyType = RigidbodyType2D.Static;
+        body.constraints =RigidbodyConstraints2D.FreezePosition;
     }
 
     public void UnFreeze()
@@ -15,7 +15,7 @@ public class FreezePosition : MonoBehaviour,IFreezable
         if (body != null)
         {
 
-            body.bodyType = RigidbodyType2D.Dynamic;
+            body.constraints =RigidbodyConstraints2D.None;
         }
     }
 

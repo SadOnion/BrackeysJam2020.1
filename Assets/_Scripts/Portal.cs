@@ -6,28 +6,40 @@ using UnityEngine;
 
 public class Portal : MonoBehaviour
 {
-    [SerializeField]GameObject botMask;
+    [SerializeField]GameObject spawnPoint;
     [SerializeField]Portal linkedPortal;
     [SerializeField] float transitionSpeed;
     [SerializeField] float exitThrowPower;
+    [SerializeField] Animator anim;
+    bool active=true;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (linkedPortal != null)
+        ITeleportable teleportable = collision.gameObject.GetComponent<ITeleportable>();
+        if(teleportable != null)
         {
-            Rigidbody2D body = collision.gameObject.GetComponent<Rigidbody2D>();
-            if(body.bodyType == RigidbodyType2D.Dynamic)
+            if (linkedPortal != null && active)
             {
-               body.bodyType = RigidbodyType2D.Kinematic;
+                Rigidbody2D body = collision.gameObject.GetComponent<Rigidbody2D>();
+                if(body.bodyType == RigidbodyType2D.Dynamic)
+                {
+                   body.bodyType = RigidbodyType2D.Kinematic;
+                   MouseSkill.canUseSkill=false;
+                    collision.isTrigger=true;
+                   body.velocity  = -transform.up*transitionSpeed;
+                   active=false;
+                }
+                else if (body.bodyType == RigidbodyType2D.Kinematic)
+                {
+                    body.bodyType = RigidbodyType2D.Dynamic;
+                    body.AddForce(transform.up*exitThrowPower);
+                    MouseSkill.canUseSkill=true;
+                    active=false;
+                }
+            
+                SpriteRenderer sr = collision.gameObject.GetComponent<SpriteRenderer>();
+                if(sr!=null)sr.maskInteraction = SpriteMaskInteraction.VisibleOutsideMask;
+
             }
-            else
-            {
-                 body.bodyType = RigidbodyType2D.Dynamic;
-                 body.AddForce(transform.up*exitThrowPower);
-            }
-       
-            body.velocity  = -transform.up*transitionSpeed;
-            SpriteRenderer sr = collision.gameObject.GetComponent<SpriteRenderer>();
-            sr.maskInteraction = SpriteMaskInteraction.VisibleOutsideMask;
 
         }
     }
@@ -35,19 +47,27 @@ public class Portal : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (linkedPortal != null)
+        ITeleportable teleportable = collision.gameObject.GetComponent<ITeleportable>();
+        if(teleportable != null)
         {
-            Rigidbody2D body = collision.gameObject.GetComponent<Rigidbody2D>();
-            if(body.bodyType == RigidbodyType2D.Kinematic)
+            if (linkedPortal != null)
             {
-                Teleport(body);
-                collision.isTrigger=true;
-            }
-            else
-            {
-                SpriteRenderer sr = collision.gameObject.GetComponent<SpriteRenderer>();
-                sr.maskInteraction = SpriteMaskInteraction.None;
-                collision.isTrigger=false;
+                Rigidbody2D body = collision.gameObject.GetComponent<Rigidbody2D>();
+                if(body.bodyType == RigidbodyType2D.Kinematic)
+                {
+                    Teleport(body);
+                }
+                else  if(body.bodyType == RigidbodyType2D.Dynamic)
+                {
+                    SpriteRenderer sr = collision.gameObject.GetComponent<SpriteRenderer>();
+                    sr.maskInteraction = SpriteMaskInteraction.None;
+                    anim.SetTrigger("Die");
+                    linkedPortal.anim.SetTrigger("Die");
+                    active=false;
+                    collision.isTrigger=false;
+
+                }
+
             }
 
         }
@@ -55,8 +75,8 @@ public class Portal : MonoBehaviour
 
     private void Teleport(Rigidbody2D body)
     {
-        body.transform.position = linkedPortal.botMask.transform.position;
-        body.velocity = linkedPortal.botMask.transform.up*transitionSpeed;
+        body.transform.position = linkedPortal.spawnPoint.transform.position;
+        body.velocity = linkedPortal.spawnPoint.transform.up*transitionSpeed;
     }
 
     public void Link(Portal portal)

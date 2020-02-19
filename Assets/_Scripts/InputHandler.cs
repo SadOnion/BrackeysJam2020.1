@@ -32,6 +32,7 @@ public class InputHandler : MonoBehaviour
                 CharacterSwitchHandler.newTarget.Jump();
         if (Input.GetMouseButtonDown(0))
         {
+            if(MouseSkill.canUseSkill&& Vector2.Distance(CharacterSwitchHandler.newTarget.transform.position,Camera.main.ScreenToWorldPoint(Input.mousePosition))<mouseSkill.skillRange)
             mouseSkill.skill();
         }
     }
