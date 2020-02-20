@@ -6,7 +6,7 @@ namespace GameJam.CharController.Movement
 {
     public class Movement : MonoBehaviour
     {
-        private protected float currentVelocity = 1f;
+        private protected float currentVelocity = 1.5f;
 
         [SerializeField]private protected float jumpForce = 2f;
 
