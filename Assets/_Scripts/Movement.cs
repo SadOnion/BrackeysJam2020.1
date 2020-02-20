@@ -6,7 +6,7 @@ namespace GameJam.CharController.Movement
 {
     public class Movement : MonoBehaviour
     {
-        private protected float currentVelocity = 1.5f;
+        [SerializeField]private protected float currentVelocity = 1.5f;
 
         [SerializeField]private protected float jumpForce = 2f;
 
@@ -25,7 +25,7 @@ namespace GameJam.CharController.Movement
         /// </summary>
         public void MoveRight()
         {
-            ridBody.AddForce(Vector3.right * currentVelocity);
+            ridBody.AddForce(Vector3.right * currentVelocity * Time.deltaTime);
         }
 
         /// <summary>
@@ -33,7 +33,7 @@ namespace GameJam.CharController.Movement
         /// </summary>
         public void MoveLeft()
         {
-            ridBody.AddForce(Vector3.left * currentVelocity);
+            ridBody.AddForce(Vector3.left * currentVelocity*Time.deltaTime);
         }
 
         /// <summary>
