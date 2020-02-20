@@ -22,25 +22,29 @@ public class Portal : MonoBehaviour
             if (linkedPortal != null)
             {
                 Rigidbody2D body = collision.gameObject.GetComponent<Rigidbody2D>();
-                if(body.bodyType == RigidbodyType2D.Dynamic && passIn)
+                if(body.constraints != RigidbodyConstraints2D.FreezeAll)
                 {
-                   body.bodyType = RigidbodyType2D.Kinematic;
-                   MouseSkill.canUseSkill=false;
-                   collision.isTrigger=true;
-                   body.velocity  = -transform.up*transitionSpeed;
-                   passIn=false;
-                }
-                else if (body.bodyType == RigidbodyType2D.Kinematic && passOut)
-                {
-                    body.bodyType = RigidbodyType2D.Dynamic;
-                    body.AddForce(transform.up*exitThrowPower*Mathf.Sqrt(body.gravityScale));
-                    MouseSkill.canUseSkill=true;
-                    passIn=false;
-                    passOut=false;
+                    if(body.bodyType == RigidbodyType2D.Dynamic && passIn)
+                    {
+                        body.bodyType = RigidbodyType2D.Kinematic;
+                        MouseSkill.canUseSkill=false;
+                        collision.isTrigger=true;
+                        body.velocity  = -transform.up*transitionSpeed;
+                        passIn=false;
+                    }
+                    else if (body.bodyType == RigidbodyType2D.Kinematic && passOut)
+                    {
+                         body.bodyType = RigidbodyType2D.Dynamic;
+                         body.AddForce(transform.up*exitThrowPower*Mathf.Sqrt(body.gravityScale));
+                         MouseSkill.canUseSkill=true;
+                         passIn=false;
+                         passOut=false;
+                    }
+                
+                     SpriteRenderer sr = collision.gameObject.GetComponent<SpriteRenderer>();
+                        if(sr!=null)sr.maskInteraction = SpriteMaskInteraction.VisibleOutsideMask;
                 }
                 
-                SpriteRenderer sr = collision.gameObject.GetComponent<SpriteRenderer>();
-                if(sr!=null)sr.maskInteraction = SpriteMaskInteraction.VisibleOutsideMask;
 
             }
 
@@ -56,6 +60,8 @@ public class Portal : MonoBehaviour
             if (linkedPortal != null)
             {
                 Rigidbody2D body = collision.gameObject.GetComponent<Rigidbody2D>();
+                if(body.constraints != RigidbodyConstraints2D.FreezeAll)
+                {
                 if(body.bodyType == RigidbodyType2D.Kinematic)
                 {
                     Teleport(body);
@@ -69,7 +75,7 @@ public class Portal : MonoBehaviour
                     collision.isTrigger=false;
 
                 }
-
+                }
             }
 
         }

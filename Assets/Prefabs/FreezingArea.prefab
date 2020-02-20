@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1540875454787363081}
   - component: {fileID: 5417666781016494688}
   - component: {fileID: 4528656812626791387}
+  - component: {fileID: 1598902244925183409}
   m_Layer: 0
   m_Name: FreezingArea
   m_TagString: Untagged
@@ -28,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 2117234855065240545}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.59, y: 1.99, z: 0}
-  m_LocalScale: {x: 6, y: 4, z: 1}
+  m_LocalScale: {x: 1.5, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -96,8 +97,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 3.9365727e-10, y: 0.004953355}
-  m_Size: {x: 1.0000007, y: 0.91744465}
+  m_Offset: {x: 9.40472e-10, y: 0.011833878}
+  m_Size: {x: 1.0000012, y: 0.8156163}
   m_Direction: 1
 --- !u!114 &4528656812626791387
 MonoBehaviour:
@@ -111,3 +112,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4664a04e58e5e94298089a121d56ea9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &1598902244925183409
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2117234855065240545}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 235c73430f7468e4da09b2e4ddf87f46, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

@@ -21,7 +21,7 @@ public class Switch : MonoBehaviour,IFreezable
 
     }
     private void OnTriggerExit2D(Collider2D collision)
-    {
+    {   
         if(!freezed)SwitchOff();
     }
     private void OnTriggerStay2D(Collider2D collision)
