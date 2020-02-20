@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/TilemapScene.unity
-    guid: f2844b485d8812643a2d8278097d098a
+    path: Assets/Scenes/TestLevel.unity
+    guid: f5b27cfd404b8094b8daeacf391cca5b
+  - enabled: 1
+    path: Assets/Scenes/LevelAttempt 1.unity
+    guid: db2ca745b8a53114690b6fef690cbe29
+  - enabled: 1
+    path: Assets/Scenes/BlankScene.unity
+    guid: 1c2cd12aab05bc642a1f4a4fbebe11cd
   m_configObjects: {}

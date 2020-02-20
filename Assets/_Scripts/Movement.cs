@@ -8,7 +8,7 @@ namespace GameJam.CharController.Movement
     {
         private protected float currentVelocity = 1f;
 
-        private protected float jumpForce = 1f;
+        [SerializeField]private protected float jumpForce = 2f;
 
         private protected Rigidbody2D ridBody;
 

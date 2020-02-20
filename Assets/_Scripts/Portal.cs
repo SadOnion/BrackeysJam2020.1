@@ -33,7 +33,7 @@ public class Portal : MonoBehaviour
                 else if (body.bodyType == RigidbodyType2D.Kinematic && passOut)
                 {
                     body.bodyType = RigidbodyType2D.Dynamic;
-                    body.AddForce(transform.up*exitThrowPower);
+                    body.AddForce(transform.up*exitThrowPower*Mathf.Sqrt(body.gravityScale));
                     MouseSkill.canUseSkill=true;
                     passIn=false;
                     passOut=false;

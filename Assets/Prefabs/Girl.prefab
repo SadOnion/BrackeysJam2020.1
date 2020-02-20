@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 6728090009121642853}
   - component: {fileID: 6728090009121642854}
   - component: {fileID: 8518202164952204198}
+  - component: {fileID: 6310116134541193059}
+  - component: {fileID: 9212421044492001475}
   m_Layer: 8
   m_Name: Girl
   m_TagString: Untagged
@@ -48,9 +50,9 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 0.06
-  m_LinearDrag: 4.67
+  m_LinearDrag: 10
   m_AngularDrag: 5
-  m_GravityScale: 4.39
+  m_GravityScale: 10
   m_Material: {fileID: 6200000, guid: 8eefae3eee3f343428b1b331f622e8f9, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -94,6 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0096ea723d63914289fd43909668672, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jumpForce: 1.75
 --- !u!212 &6728090009121642854
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -154,5 +157,36 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbfafc09d50896e4ca71cc48efc5af9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &6310116134541193059
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6728090009121642851}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cb1c1b4760b171945aaa5f919571b2ad, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &9212421044492001475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6728090009121642851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e18e18f1d4de5a45991d62bf6e4b806, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

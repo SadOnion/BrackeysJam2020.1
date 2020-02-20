@@ -20,27 +20,35 @@ public class MouseSkill : MonoBehaviour
     public void PlaceNewPortal()
     {
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 player = CharacterSwitchHandler.newTarget.transform.position;
         Collider2D point = Physics2D.OverlapCircle(mousePos,.01f);
         if(point == null)
         {
-            Collider2D[] col = Physics2D.OverlapBoxAll(mousePos,Vector2.one*2f,0);
-            foreach (var item in col)
+            Vector2 raydir = mousePos-player;
+            float range = Vector2.Distance(player,mousePos);
+            RaycastHit2D rayinfo =Physics2D.Raycast(player,raydir,range);
+            if(rayinfo.collider == null || rayinfo.collider.gameObject.layer!=12)
             {
-                if(item != null && item.attachedRigidbody != null && item.attachedRigidbody.bodyType==RigidbodyType2D.Static)
+                Collider2D[] col = Physics2D.OverlapBoxAll(mousePos,Vector2.one*2f,0);
+                foreach (var item in col)
                 {
-                    
-                    Vector3 spawnPoint = item.ClosestPoint(mousePos);
-                    Vector3 dir = spawnPoint-mousePos;
-                    RaycastHit2D info = Physics2D.Raycast(mousePos,dir,5f);
-                    if(info.collider != null)
+                    if(item != null && item.attachedRigidbody != null && item.attachedRigidbody.bodyType==RigidbodyType2D.Static)
                     {
-                        float rotation = Vector2.Angle(Vector2.right,info.normal);
+                    
+                        Vector3 spawnPoint = item.ClosestPoint(mousePos);
+                        Vector3 dir = spawnPoint-mousePos;
+                        RaycastHit2D info = Physics2D.Raycast(mousePos,dir,5f);
+                        if(info.collider != null)
+                        {
+                            float rotation = Vector2.Angle(Vector2.right,info.normal);
                         
-                        Portal newPortal = Instantiate(portal,spawnPoint,Quaternion.Euler(0,0,CalculateRotation(info.normal))).GetComponent<Portal>();
-                        AddPortal(newPortal);
+                            Portal newPortal = Instantiate(portal,spawnPoint,Quaternion.Euler(0,0,CalculateRotation(info.normal))).GetComponent<Portal>();
+                            AddPortal(newPortal);
+                        }
+                        break;
                     }
-                    break;
                 }
+
             }
             
         }

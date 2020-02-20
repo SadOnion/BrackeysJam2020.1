@@ -15,13 +15,15 @@ public class Saw : MonoBehaviour,IFreezable
     public void Freeze()
     {
         freezed=true;
-        anim.StartPlayback();
+        anim.speed=0;
     }
 
     public void UnFreeze()
     {
         freezed=false;
-        anim.StopPlayback();
+        if(anim!=null)
+        anim.speed=1;
+
     }
 
     // Start is called before the first frame update

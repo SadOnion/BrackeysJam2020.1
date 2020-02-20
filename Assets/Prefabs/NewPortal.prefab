@@ -50,7 +50,7 @@ MonoBehaviour:
   spawnPoint: {fileID: 8170471600353306549}
   linkedPortal: {fileID: 0}
   transitionSpeed: 2.5
-  exitThrowPower: 75
+  exitThrowPower: 50
   anim: {fileID: 7814699277422924173}
 --- !u!61 &2113277890099718786
 BoxCollider2D:
@@ -225,17 +225,17 @@ PrefabInstance:
     - target: {fileID: 1511032848602568414, guid: c209b28d40ecef44f865559df326d758,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1511032848602568414, guid: c209b28d40ecef44f865559df326d758,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 10
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1511032848602568414, guid: c209b28d40ecef44f865559df326d758,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.5
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 1511032848602568414, guid: c209b28d40ecef44f865559df326d758,
         type: 3}
