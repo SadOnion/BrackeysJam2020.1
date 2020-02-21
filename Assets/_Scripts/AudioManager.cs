@@ -9,7 +9,7 @@ public class AudioManager : MonoBehaviour
     [Space]
     public Sound[] sounds;
     public static AudioManager instance;
-
+    public Sound[] steps;
     private void Awake()
     {
         if (instance == null) instance = this;
@@ -29,11 +29,21 @@ public class AudioManager : MonoBehaviour
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
         }
+        foreach (Sound s in steps)
+        {
+            s.source = gameObject.AddComponent<AudioSource>();
+            s.source.clip = s.clip;
+
+            s.source.volume = muted?0:s.volume;
+            s.source.pitch = s.pitch;
+            s.source.loop = s.loop;
+        }
+        
     }
 
     private void Start()
     {
-       // Play("Theme");
+       Play("Theme");
     }
     public void Play(string name)
     {
@@ -49,5 +59,10 @@ public class AudioManager : MonoBehaviour
     {
         Sound s = Array.Find(sounds, sound => sound.name == name);
         s?.source.Stop();
+    }
+    public void RandomStepSound()
+    {
+        int rand = UnityEngine.Random.Range(0,steps.Length);
+        steps[rand].source.Play();
     }
 }

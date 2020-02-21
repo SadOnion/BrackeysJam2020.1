@@ -8,6 +8,7 @@ public class Saw : MonoBehaviour,IFreezable
     public float speed;
     [SerializeField]Vector2[] points;
     Rigidbody2D body;
+    AudioSource source;
     int index;
     Animator anim;
     private bool freezed;
@@ -16,6 +17,7 @@ public class Saw : MonoBehaviour,IFreezable
     {
         freezed=true;
         anim.speed=0;
+        source.Stop();
     }
 
     public void UnFreeze()
@@ -23,7 +25,7 @@ public class Saw : MonoBehaviour,IFreezable
         freezed=false;
         if(anim!=null)
         anim.speed=1;
-
+        if(source!=null)source.Play();
     }
 
     // Start is called before the first frame update
@@ -31,6 +33,7 @@ public class Saw : MonoBehaviour,IFreezable
     {
         body =GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        source = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame

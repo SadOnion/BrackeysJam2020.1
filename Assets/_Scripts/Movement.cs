@@ -33,7 +33,7 @@ namespace GameJam.CharController.Movement
         /// </summary>
         public void MoveLeft()
         {
-            ridBody.AddForce(Vector3.left * currentVelocity*Time.deltaTime);
+            ridBody.AddForce(Vector3.left * currentVelocity * Time.deltaTime);
         }
 
         /// <summary>

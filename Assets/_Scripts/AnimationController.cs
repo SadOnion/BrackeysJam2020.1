@@ -30,4 +30,9 @@ public class AnimationController : MonoBehaviour
             body.transform.localScale = Vector3.one;
         }
     }
+    public void Die()
+    {
+        anim.SetTrigger("Die");
+    }
+    public void Step()=>AudioManager.instance.RandomStepSound();
 }

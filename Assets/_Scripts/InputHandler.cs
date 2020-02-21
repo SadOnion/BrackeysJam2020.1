@@ -19,7 +19,7 @@ public class InputHandler : MonoBehaviour
            switchHandler.ChangeFocus();
             mouseSkill.ChangeSkill();
         }
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && PauseMenu.paused==false)
         {
             if(MouseSkill.canUseSkill&& Vector2.Distance(CharacterSwitchHandler.newTarget.transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition)) < mouseSkill.skillRange)
             {

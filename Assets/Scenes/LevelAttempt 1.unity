@@ -11173,6 +11173,11 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 830990165}
+    - target: {fileID: 8874992219665676561, guid: 09f4e21cc35ef5c48a6496aea99fe5e7,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09f4e21cc35ef5c48a6496aea99fe5e7, type: 3}
 --- !u!114 &703497827 stripped
@@ -11360,6 +11365,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Main Camera
+      objectReference: {fileID: 0}
+    - target: {fileID: 5765690880039810932, guid: 10a226aa0dd6b174da01e4ca798a21d0,
+        type: 3}
+      propertyPath: orthographic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5765690880039810932, guid: 10a226aa0dd6b174da01e4ca798a21d0,
+        type: 3}
+      propertyPath: m_FOVAxisMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5765690880039810932, guid: 10a226aa0dd6b174da01e4ca798a21d0,
+        type: 3}
+      propertyPath: field of view
+      value: 26
       objectReference: {fileID: 0}
     - target: {fileID: 5765690880039810933, guid: 10a226aa0dd6b174da01e4ca798a21d0,
         type: 3}

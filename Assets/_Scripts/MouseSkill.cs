@@ -44,6 +44,7 @@ public class MouseSkill : MonoBehaviour
                         
                             Portal newPortal = Instantiate(portal,spawnPoint,Quaternion.Euler(0,0,CalculateRotation(info.normal))).GetComponent<Portal>();
                             AddPortal(newPortal);
+                            AudioManager.instance.Play("Portal");
                         }
                         break;
                     }

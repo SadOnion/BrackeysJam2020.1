@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5417666781016494688}
   - component: {fileID: 4528656812626791387}
   - component: {fileID: 1598902244925183409}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: FreezingArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,11 +70,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 103429069
+  m_SortingLayer: 3
+  m_SortingOrder: 100
   m_Sprite: {fileID: 21300000, guid: 90aac69390c3c31409abeae1832ed80c, type: 3}
-  m_Color: {r: 0.7844012, g: 0.25, b: 1, a: 0.27058825}
+  m_Color: {r: 0.40259996, g: 0.25098038, b: 1, a: 0.13725491}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
