@@ -19,8 +19,9 @@ public class MouseSkill : MonoBehaviour
     }
     public void PlaceNewPortal()
     {
-        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector3 player = CharacterSwitchHandler.newTarget.transform.position;
+
+        Vector2 mousePos = GetWorldPositionOnPlane(Input.mousePosition,0);
+        Vector2 player = CharacterSwitchHandler.newTarget.transform.position;
         Collider2D point = Physics2D.OverlapCircle(mousePos,.01f);
         if(point == null)
         {
@@ -35,8 +36,8 @@ public class MouseSkill : MonoBehaviour
                     if(item != null && item.attachedRigidbody != null && item.attachedRigidbody.bodyType==RigidbodyType2D.Static)
                     {
                     
-                        Vector3 spawnPoint = item.ClosestPoint(mousePos);
-                        Vector3 dir = spawnPoint-mousePos;
+                        Vector2 spawnPoint = item.ClosestPoint(mousePos);
+                        Vector2 dir = spawnPoint-mousePos;
                         RaycastHit2D info = Physics2D.Raycast(mousePos,dir,5f);
                         if(info.collider != null)
                         {
@@ -57,7 +58,7 @@ public class MouseSkill : MonoBehaviour
     }
     public void PlaceFreezeArea()
     {
-         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+         Vector2 mousePos = GetWorldPositionOnPlane(Input.mousePosition,0);
         if(placedFreezeArea!=null)Destroy(placedFreezeArea);
         placedFreezeArea = Instantiate(freezeArea,mousePos,freezeArea.transform.rotation);
     }
@@ -106,4 +107,11 @@ public class MouseSkill : MonoBehaviour
     {
         portalList.Remove(p);
     }
+    public Vector3 GetWorldPositionOnPlane(Vector3 screenPosition, float z) {
+     Ray ray = Camera.main.ScreenPointToRay(screenPosition);
+     Plane xy = new Plane(Vector3.forward, new Vector3(0, 0, z));
+     float distance;
+     xy.Raycast(ray, out distance);
+     return ray.GetPoint(distance);
+ }
 }

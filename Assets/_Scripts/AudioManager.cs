@@ -65,4 +65,12 @@ public class AudioManager : MonoBehaviour
         int rand = UnityEngine.Random.Range(0,steps.Length);
         steps[rand].source.Play();
     }
+    public void ChangeVolume(float vol)
+    {
+        vol = Mathf.Clamp(vol,0,1f);
+        foreach (var item in sounds)
+        {
+            item.source.volume = item.volume*vol;
+        }
+    }
 }
