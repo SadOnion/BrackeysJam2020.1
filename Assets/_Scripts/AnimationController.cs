@@ -16,6 +16,8 @@ public class AnimationController : MonoBehaviour
     {
         UpdateLocalScale();
         anim.SetFloat("Speed",Mathf.Abs(body.velocity.x));
+        anim.SetFloat("SpeedY",Mathf.Abs(body.velocity.y));
+        anim.SetBool("OnGround",CharacterSwitchHandler.newTarget.groundCheck.IsOnGround());
     }
 
     private void UpdateLocalScale()
@@ -33,6 +35,10 @@ public class AnimationController : MonoBehaviour
     public void Die()
     {
         anim.SetTrigger("Die");
+    }
+    public void UsePowerAnimation()
+    {
+        anim.SetTrigger("Power");
     }
     public void Step()=>AudioManager.instance.RandomStepSound();
 }
