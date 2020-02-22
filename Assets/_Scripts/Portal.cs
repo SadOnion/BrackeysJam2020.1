@@ -98,6 +98,9 @@ public class Portal : MonoBehaviour
         GetComponent<BoxCollider2D>().enabled = true;
         linkedPortal.gameObject.GetComponent<BoxCollider2D>().enabled = true;
     }
-    
+    public void Die()
+    {
+        passIn=false;
+    }
 }
 
