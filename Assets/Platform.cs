@@ -31,7 +31,7 @@ public class Platform : MonoBehaviour,IFreezable
     {
         if (!freezed)
         {
-            body.MovePosition(Vector2.MoveTowards(body.position,points[index],Time.deltaTime*speed));
+            body.transform.position = (Vector2.MoveTowards(body.position,points[index],Time.deltaTime*speed));
             if (Vector2.Distance(body.position, points[index]) < 0.25f)
             {
                  NextPoint();
@@ -39,7 +39,22 @@ public class Platform : MonoBehaviour,IFreezable
         }
         
     }
-
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Rigidbody2D body = collision.gameObject.GetComponent<Rigidbody2D>();
+        if(body.bodyType== RigidbodyType2D.Dynamic)
+        {
+            collision.gameObject.transform.SetParent(transform);
+        }
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        Rigidbody2D body = collision.gameObject.GetComponent<Rigidbody2D>();
+        if(body.bodyType== RigidbodyType2D.Dynamic)
+        {
+            collision.gameObject.transform.SetParent(null);
+        }
+    }
     private void NextPoint()
     {
         index++;

@@ -35,6 +35,12 @@ public class Door : MonoBehaviour,IFreezable
         
         
     }
+    public void MoveRight()
+    {
+        StopAllCoroutines();
+            StartCoroutine(StarMoving(Vector2.right));
+          
+    }
 
     private IEnumerator StarMoving(Vector2 dir)
     {
