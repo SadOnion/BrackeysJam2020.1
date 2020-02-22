@@ -307,7 +307,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3649770169254648389}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6344428584465535214
 MonoBehaviour:
@@ -449,7 +449,7 @@ RectTransform:
   m_Children:
   - {fileID: 2218448482457951088}
   m_Father: {fileID: 3649770169254648389}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -908,6 +908,9 @@ MonoBehaviour:
   portal: {fileID: 1511032847988167737, guid: fb1a7c6ca786ef34bbac1b39cc9dab3c, type: 3}
   freezeArea: {fileID: 2117234855065240545, guid: f3e1797780759d0429c038d6d791f0c1,
     type: 3}
+  wallsLayer:
+    serializedVersion: 2
+    m_Bits: 4096
   skillRange: 5
 --- !u!1 &3649770169254648390
 GameObject:
@@ -939,7 +942,6 @@ Transform:
   - {fileID: 3649770168575557065}
   - {fileID: 2173929887341911397}
   - {fileID: 6577856981924848712}
-  - {fileID: 6691843865914152393}
   - {fileID: 8874992219665676561}
   - {fileID: 3875182075944143840}
   - {fileID: 3014160445751622223}
@@ -1291,7 +1293,7 @@ Transform:
   m_Children:
   - {fileID: 6333085257403538196}
   m_Father: {fileID: 3649770169254648389}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &5491318864244559441
 Animator:
@@ -1326,6 +1328,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 5491318864244559441}
   transitionTime: 1
+  save: {fileID: 11400000, guid: 7d023576680d32c488e13bd569503b54, type: 2}
 --- !u!1 &4662490826623472882
 GameObject:
   m_ObjectHideFlags: 0
@@ -1733,106 +1736,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!1 &5448695065685322164
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6691843865914152393}
-  - component: {fileID: 4910076390059588296}
-  m_Layer: 0
-  m_Name: AudioManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6691843865914152393
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5448695065685322164}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 3649770169254648389}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4910076390059588296
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5448695065685322164}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58d4d286fddf65e4fa6b9f33c8284344, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  muted: 0
-  sounds:
-  - name: SwitchOn
-    clip: {fileID: 8300000, guid: 8e487c627a94cb044b0cabffeba6a7b2, type: 3}
-    volume: 0.5
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - name: SwitchOff
-    clip: {fileID: 8300000, guid: 3a02dd5d1476e0f469f4a684163d6cd5, type: 3}
-    volume: 0.5
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - name: Portal
-    clip: {fileID: 8300000, guid: bac2ba0a7414ff147ace1f8716c6dd4c, type: 3}
-    volume: 1
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - name: Theme
-    clip: {fileID: 8300000, guid: 2eedc141cc625ed4ab570ccf02dae39e, type: 3}
-    volume: 0.15
-    pitch: 1
-    loop: 1
-    source: {fileID: 0}
-  steps:
-  - name: fs1
-    clip: {fileID: 8300000, guid: ae3da003eead9ec428380ff6d6e6fc9b, type: 3}
-    volume: 0.5
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - name: fs2
-    clip: {fileID: 8300000, guid: 79d8b507c66cc30409de86e5be39e687, type: 3}
-    volume: 0.5
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - name: fs3
-    clip: {fileID: 8300000, guid: 1a12ee115f264dc42a5dbe20555c4262, type: 3}
-    volume: 0.5
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - name: fs4
-    clip: {fileID: 8300000, guid: ebac2ed8f945cb54ab071edabbcc88e2, type: 3}
-    volume: 0.5
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - name: fs5
-    clip: {fileID: 8300000, guid: b47575042a36b2f40803e0dac8e45e57, type: 3}
-    volume: 0.5
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
 --- !u!1 &5644854261534586135
 GameObject:
   m_ObjectHideFlags: 0

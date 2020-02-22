@@ -14,7 +14,7 @@ public class InputHandler : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftControl))
+        if (Input.GetKeyDown(KeyCode.S))
         {
            switchHandler.ChangeFocus();
             mouseSkill.ChangeSkill();

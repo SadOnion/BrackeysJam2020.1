@@ -7,6 +7,7 @@ public class MouseSkill : MonoBehaviour
 {
     [SerializeField] GameObject portal;
     [SerializeField] GameObject freezeArea;
+    [SerializeField]LayerMask wallsLayer;
     GameObject placedFreezeArea;
     List<Portal> portalList;
     public float skillRange=3f;
@@ -27,8 +28,8 @@ public class MouseSkill : MonoBehaviour
         {
             Vector2 raydir = mousePos-player;
             float range = Vector2.Distance(player,mousePos);
-            RaycastHit2D rayinfo =Physics2D.Raycast(player,raydir,range);
-            if(rayinfo.collider == null || rayinfo.collider.gameObject.layer!=12)
+            RaycastHit2D rayinfo =Physics2D.Raycast(player,raydir,range,wallsLayer.value);
+            if(rayinfo.collider == null )
             {
                 Collider2D[] col = Physics2D.OverlapBoxAll(mousePos,Vector2.one*2f,0);
                 foreach (var item in col)

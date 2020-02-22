@@ -5,7 +5,7 @@ using System;
 public class AudioManager : MonoBehaviour
 {
 
-    [SerializeField]bool muted;
+    [SerializeField]bool muted=false;
     [Space]
     public Sound[] sounds;
     public static AudioManager instance;
@@ -38,6 +38,7 @@ public class AudioManager : MonoBehaviour
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
         }
+        DontDestroyOnLoad(gameObject);
         
     }
 

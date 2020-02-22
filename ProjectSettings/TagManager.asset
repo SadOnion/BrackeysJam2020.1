@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: [Trap]
+  tags:
+  - Trap
+  - Trigger
   layers:
   - Default
   - TransparentFX
@@ -19,7 +21,6 @@ TagManager:
   - Portal
   - WallsAndGround
   - Trap
-  - 
   - 
   - 
   - 

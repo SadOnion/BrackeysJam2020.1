@@ -1,0 +1,17 @@
+(E12)
+show floorbuttonoff
+say TestName1 "test text 1"
+show null
+say TestName2 "test text 2"
+show background
+say    TestName3 "test text 3"
+say TestName4 "test text 4"
+show null
+say TestName5 "test text 5"
+(E13)
+show background
+say person "What's up?"
+show floorbuttonoff
+say other person "the sky"
+show background
+say person ":eyes:"

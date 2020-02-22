@@ -5,13 +5,18 @@ using UnityEngine.UI;
 
 public class DialogueHandler : MonoBehaviour
 {
-    public Text middleTextObject;
-    public Text bottomTextObject;
+    private Text text;
+    private GameObject dialogueBox;
+    private Text deathCounterText;
+    public static int deathCount = 0;
 
-    public enum DisplayTextPosition
+    private void Start()
     {
-         MiddleScreen = 0,
-         BottomScreen = 1
+        text = GameObject.Find("Text").GetComponent<Text>();
+        deathCounterText = GameObject.Find("Death Counter").GetComponent<Text>();
+        dialogueBox = GameObject.Find("DialougeBox");
+        dialogueBox.SetActive(false);
+        deathCounterText.text = "Deaths: " + deathCount;
     }
 
     public enum TextAnimation
@@ -21,31 +26,27 @@ public class DialogueHandler : MonoBehaviour
         typewriter = 2
     }
 
-    public void DisplayText(string dialogueText, DisplayTextPosition dialoguePosition, TextAnimation dialogueAnimation)
+    public void AddDeath()
     {
-        if (dialoguePosition == DisplayTextPosition.MiddleScreen && dialogueAnimation == TextAnimation.none)
+        deathCount++;
+        deathCounterText.text = "Deaths: " + deathCount;
+    }
+
+    public void DisplayText(string dialogueText, TextAnimation dialogueAnimation)
+    {
+        dialogueBox.SetActive(true);
+
+        switch (dialogueAnimation)
         {
-            middleTextObject.text = dialogueText;
-        }
-        else if (dialoguePosition == DisplayTextPosition.BottomScreen && dialogueAnimation == TextAnimation.none)
-        {
-            bottomTextObject.text = dialogueText;
-        }
-        else if (dialoguePosition == DisplayTextPosition.MiddleScreen && dialogueAnimation == TextAnimation.fade)
-        {
-            StartCoroutine(FadeEffect(middleTextObject, dialogueText));
-        }
-        else if (dialoguePosition == DisplayTextPosition.BottomScreen && dialogueAnimation == TextAnimation.fade)
-        {
-            StartCoroutine(FadeEffect(bottomTextObject, dialogueText));
-        }
-        else if (dialoguePosition == DisplayTextPosition.MiddleScreen && dialogueAnimation == TextAnimation.typewriter)
-        {
-            StartCoroutine(TypewriterEffect(middleTextObject, dialogueText));
-        }
-        else if (dialoguePosition == DisplayTextPosition.BottomScreen && dialogueAnimation == TextAnimation.typewriter)
-        {
-            StartCoroutine(TypewriterEffect(bottomTextObject, dialogueText));
+            case TextAnimation.none:
+                text.text = dialogueText;
+                break;
+            case TextAnimation.fade:
+                StartCoroutine(FadeEffect(text, dialogueText));
+                break;
+            case TextAnimation.typewriter:
+                StartCoroutine(TypewriterEffect(text, dialogueText));
+                break;
         }
     }
 
@@ -62,6 +63,9 @@ public class DialogueHandler : MonoBehaviour
             textObj.color = colorRef;
             yield return new WaitForSeconds(0.05f);
         }
+
+        yield return new WaitForSeconds(1.5f);
+        dialogueBox.SetActive(false);
     }
 
     public IEnumerator TypewriterEffect(Text textObj, string dialogueText)
@@ -70,14 +74,15 @@ public class DialogueHandler : MonoBehaviour
         colorRef.a = 1;
         textObj.color = colorRef;
         var fullText = dialogueText;
-        var currentText = "";
 
-        for (int i = 0; i < fullText.Length; i++)
+        for (int i = 0; i < fullText.Length + 1; i++)
         {
-            currentText = fullText.Substring(0, i);
-            textObj.text = currentText;
+            textObj.text = dialogueText.Substring(0, i) + "<color=#00000000>" + dialogueText.Substring(i, dialogueText.Length - i) + "</color>";
             yield return new WaitForSeconds(0.05f);
         }
+
+        yield return new WaitForSeconds(1.5f);
+        dialogueBox.SetActive(false);
     }
 
     public void ClearAllText(Text textObj)
@@ -87,5 +92,4 @@ public class DialogueHandler : MonoBehaviour
         textObj.color = colorRef;
         textObj.text = "";
     }
-   
 }

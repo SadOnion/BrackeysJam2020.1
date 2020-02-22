@@ -4,19 +4,47 @@ using UnityEngine;
 
 public class Death : MonoBehaviour
 {
-    public GameObject deathWall;
-    public DialogueHandler dialogueHandler;
+    private CameraBehaviour cameraBehaviour;
+    private AnimationController animationController;
+    private LevelLoader levelLoader;
+    private DialogueHandler dialogueHandler;
+
+    private void Start()
+    {
+        cameraBehaviour = Camera.main.GetComponent<CameraBehaviour>();
+        animationController = gameObject.GetComponent<AnimationController>();
+        levelLoader = GameObject.Find("LevelLoader").GetComponent<LevelLoader>();
+        dialogueHandler = GameObject.Find("DialougeCanvas").GetComponent<DialogueHandler>();
+    }
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.tag == "Trap")
         {
-            StartCoroutine(DeathSequence(deathWall));
+            StartCoroutine(DeathSequence());
+            dialogueHandler.AddDeath();          
+        }
+        else if (collision.collider.tag == "Trigger")
+        {
+            cameraBehaviour.canFollow = false;
+            collision.collider.isTrigger = true;
+            levelLoader.ReloadLevel();
+            dialogueHandler.AddDeath();
         }
     }
 
-    private IEnumerator DeathSequence(GameObject wallObj)
+    private IEnumerator DeathSequence()
     {
-        yield return null;
+        while (cameraBehaviour.GetComponent<Camera>().fieldOfView > 20f)
+        {
+            cameraBehaviour.Zoom(0.25f);
+            animationController.Die();
+            gameObject.GetComponent<Rigidbody2D>().simulated = false;
+            Debug.Log(cameraBehaviour.zoomAmount);
+            yield return new WaitForSeconds(0.025f);
+        }
+
+        yield return new WaitForSeconds(1);
+        levelLoader.ReloadLevel();
     }
 }
