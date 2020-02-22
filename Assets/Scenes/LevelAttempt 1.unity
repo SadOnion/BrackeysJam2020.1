@@ -15049,6 +15049,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3649770168575557066, guid: 09f4e21cc35ef5c48a6496aea99fe5e7,
+        type: 3}
+      propertyPath: boyAnimationController
+      value: 
+      objectReference: {fileID: 1881390167}
+    - target: {fileID: 3649770168575557066, guid: 09f4e21cc35ef5c48a6496aea99fe5e7,
+        type: 3}
+      propertyPath: girlAnimationController
+      value: 
+      objectReference: {fileID: 1482656776}
     - target: {fileID: 3649770169254648389, guid: 09f4e21cc35ef5c48a6496aea99fe5e7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -16178,6 +16188,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 731947783}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1482656776 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9212421044492001475, guid: 472de8d9e821fb84d8df610f39c61e5b,
+    type: 3}
+  m_PrefabInstance: {fileID: 731947783}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1482656775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e18e18f1d4de5a45991d62bf6e4b806, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1482656783
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18831,6 +18853,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 824808452}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1881390167 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2660468783744444549, guid: a11090dae8d774f4a848eab6f05965cd,
+    type: 3}
+  m_PrefabInstance: {fileID: 824808452}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1881390166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e18e18f1d4de5a45991d62bf6e4b806, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1881390174
 MonoBehaviour:
   m_ObjectHideFlags: 0

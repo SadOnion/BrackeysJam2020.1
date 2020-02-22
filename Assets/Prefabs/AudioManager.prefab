@@ -100,3 +100,23 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  themes:
+  - name: Theme0
+    clip: {fileID: 8300000, guid: 2eedc141cc625ed4ab570ccf02dae39e, type: 3}
+    volume: 0.15
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Theme1
+    clip: {fileID: 8300000, guid: 888b3de76e54c674287ef85db4a457c4, type: 3}
+    volume: 0.15
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Theme2
+    clip: {fileID: 8300000, guid: 53b325e6f2e7f704ea26cb710ea7de33, type: 3}
+    volume: 0.15
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  newThemeEveryLevels: 2

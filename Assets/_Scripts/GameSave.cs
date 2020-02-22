@@ -5,4 +5,6 @@ using UnityEngine;
 public class GameSave : ScriptableObject
 {
     public int lastLevel=0;
+
+    public void Save(int lvl)=>lastLevel=lvl;
 }

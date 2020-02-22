@@ -24,10 +24,13 @@ public class Death : MonoBehaviour
             StartCoroutine(DeathSequence());
             dialogueHandler.AddDeath();          
         }
-        else if (collision.collider.tag == "Trigger")
+    }
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Trigger")
         {
             cameraBehaviour.canFollow = false;
-            collision.collider.isTrigger = true;
             levelLoader.ReloadLevel();
             dialogueHandler.AddDeath();
         }

@@ -25,7 +25,6 @@ public class AnimationController : MonoBehaviour
         if (Input.GetKey(KeyCode.D)&& body.velocity.x>1f)
         {
             body.transform.localScale = new Vector2(-1,1);
-
         }
         if (Input.GetKey(KeyCode.A)&& body.velocity.x<-1f)
         {

@@ -18,6 +18,7 @@ public class Saw : MonoBehaviour,IFreezable
         freezed=true;
         anim.speed=0;
         source.Stop();
+        body.velocity = Vector2.zero;
     }
 
     public void UnFreeze()
@@ -41,8 +42,10 @@ public class Saw : MonoBehaviour,IFreezable
     {
         if (!freezed)
         {
-            body.MovePosition(Vector2.MoveTowards(body.position,points[index],Time.deltaTime*speed));
-            if (Vector2.Distance(body.position, points[index]) < 0.25f)
+            Vector2 dir = points[index] - body.position;
+            dir.Normalize();
+            body.velocity = dir*speed;
+            if (Vector2.Distance(body.position, points[index]) < 0.5f)
             {
                  NextPoint();
             }

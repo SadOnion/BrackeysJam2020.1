@@ -10,6 +10,9 @@ public class AudioManager : MonoBehaviour
     public Sound[] sounds;
     public static AudioManager instance;
     public Sound[] steps;
+    public Sound[] themes;
+    public int newThemeEveryLevels=2;
+    int previousThemeNum=0;
     private void Awake()
     {
         if (instance == null) instance = this;
@@ -38,14 +41,51 @@ public class AudioManager : MonoBehaviour
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
         }
+         foreach (Sound s in themes)
+        {
+            s.source = gameObject.AddComponent<AudioSource>();
+            s.source.clip = s.clip;
+
+            s.source.volume = muted?0:s.volume;
+            s.source.pitch = s.pitch;
+            s.source.loop = s.loop;
+        }
         DontDestroyOnLoad(gameObject);
         
     }
 
     private void Start()
     {
-       Play("Theme");
+       PlayTheme("Theme0");
     }
+    public void PlayNextTheme(int sceneIndex)
+    {
+        if(sceneIndex % newThemeEveryLevels == 0)
+        {
+            int themeNum = sceneIndex/newThemeEveryLevels;
+            while(themeNum >= themes.Length)
+            {
+                themeNum -=themes.Length;
+            }
+            if(!IsPlayingTheme("Theme"+themeNum))PlayTheme("Theme"+themeNum);
+        }
+        
+    }
+    public void PlayTheme(string name)
+    {
+        foreach (var item in themes)
+        {
+            if(item.source.isPlaying)item.source.Stop();
+        }
+        Sound s = Array.Find(themes, sound => sound.name == name);
+        s?.source.Play();
+    }
+    public bool IsPlayingTheme(string name)
+    {
+        Sound s = Array.Find(themes, sound => sound.name == name);
+        return s.source.isPlaying;
+    }
+   
     public void Play(string name)
     {
         Sound s = Array.Find(sounds, sound => sound.name == name);
@@ -70,6 +110,10 @@ public class AudioManager : MonoBehaviour
     {
         vol = Mathf.Clamp(vol,0,1f);
         foreach (var item in sounds)
+        {
+            item.source.volume = item.volume*vol;
+        }
+        foreach (var item in themes)
         {
             item.source.volume = item.volume*vol;
         }

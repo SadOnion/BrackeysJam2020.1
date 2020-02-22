@@ -31,7 +31,9 @@ public class Platform : MonoBehaviour,IFreezable
     {
         if (!freezed)
         {
-            body.transform.position = (Vector2.MoveTowards(body.position,points[index],Time.deltaTime*speed));
+            Vector2 dir = points[index] - body.position;
+            dir.Normalize();
+            transform.position = body.position+dir*Time.deltaTime*speed;
             if (Vector2.Distance(body.position, points[index]) < 0.25f)
             {
                  NextPoint();

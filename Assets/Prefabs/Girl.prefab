@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentVelocity: 250
-  jumpForce: 2.25
+  jumpForce: 1.75
 --- !u!212 &6728090009121642854
 SpriteRenderer:
   m_ObjectHideFlags: 0

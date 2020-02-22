@@ -10,8 +10,11 @@ public class LevelLoader : MonoBehaviour
     public GameSave save;
     public void LoadNextLevel()
     {
-        save.lastLevel = SceneManager.GetActiveScene().buildIndex+1;
-       StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex+1));
+        int nextLevel = SceneManager.GetActiveScene().buildIndex+1;
+        
+        save.Save(nextLevel);
+        Debug.Log(save.lastLevel);
+       StartCoroutine(LoadLevel(nextLevel));
     }
 
     IEnumerator LoadLevel(int levelIndex)
@@ -19,7 +22,7 @@ public class LevelLoader : MonoBehaviour
         anim.SetTrigger("Start");
 
         yield return new WaitForSeconds(transitionTime);
-
+        AudioManager.instance.PlayNextTheme(levelIndex);
          SceneManager.LoadScene(levelIndex);
     }
     public void ReloadLevel()
