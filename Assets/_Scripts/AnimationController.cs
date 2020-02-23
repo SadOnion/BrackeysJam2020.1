@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GameJam.CharController.Movement;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,7 @@ public class AnimationController : MonoBehaviour
 {
     Animator anim;
     Rigidbody2D body;
+    [SerializeField]Movement movement;
     private void Start()
     {
         anim = GetComponent<Animator>();
@@ -17,7 +19,9 @@ public class AnimationController : MonoBehaviour
         UpdateLocalScale();
         anim.SetFloat("Speed",Mathf.Abs(body.velocity.x));
         anim.SetFloat("SpeedY",Mathf.Abs(body.velocity.y));
-        anim.SetBool("OnGround",CharacterSwitchHandler.newTarget.groundCheck.IsOnGround());
+        anim.SetBool("OnGround",movement.groundCheck.IsOnGround());
+        
+        
     }
 
     private void UpdateLocalScale()

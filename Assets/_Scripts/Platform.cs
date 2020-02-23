@@ -9,6 +9,7 @@ public class Platform : MonoBehaviour,IFreezable
     Rigidbody2D body;
     int index;
     private bool freezed;
+    [SerializeField]bool moveFromStart=true;
 
     public void Freeze()
     {
@@ -27,13 +28,13 @@ public class Platform : MonoBehaviour,IFreezable
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        if (!freezed)
+        if (!freezed && moveFromStart)
         {
             Vector2 dir = points[index] - body.position;
             dir.Normalize();
-            transform.position = body.position+dir*Time.deltaTime*speed;
+            transform.position = Vector3.MoveTowards(transform.position,points[index],Time.deltaTime*speed);
             if (Vector2.Distance(body.position, points[index]) < 0.25f)
             {
                  NextPoint();
@@ -62,6 +63,10 @@ public class Platform : MonoBehaviour,IFreezable
         index++;
         if(index >= points.Length)index =0;
     }
+    private int PrevoiusPoint()
+    {
+        return index-1<=0?points.Length-1:index-1;
+    }
 
     private void OnDrawGizmos()
     {
@@ -77,5 +82,13 @@ public class Platform : MonoBehaviour,IFreezable
                 Gizmos.DrawLine(points[0],points[i]);
             }
         }
+    }
+    public void StartMoving()
+    {
+        moveFromStart = true;
+    }
+    public void Stopving()
+    {
+        moveFromStart = false;
     }
 }

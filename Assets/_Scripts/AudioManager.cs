@@ -60,15 +60,10 @@ public class AudioManager : MonoBehaviour
     }
     public void PlayNextTheme(int sceneIndex)
     {
-        if(sceneIndex % newThemeEveryLevels == 0)
-        {
-            int themeNum = sceneIndex/newThemeEveryLevels;
-            while(themeNum >= themes.Length)
-            {
-                themeNum -=themes.Length;
-            }
-            if(!IsPlayingTheme("Theme"+themeNum))PlayTheme("Theme"+themeNum);
-        }
+        int theme = sceneIndex/newThemeEveryLevels;
+        theme = theme>=themes.Length?themes.Length-1:theme;
+        if(!IsPlayingTheme("Theme"+theme))PlayTheme("Theme"+theme);
+        
         
     }
     public void PlayTheme(string name)
@@ -108,6 +103,7 @@ public class AudioManager : MonoBehaviour
     }
     public void ChangeVolume(float vol)
     {
+        GameObject[] sources = GameObject.FindGameObjectsWithTag("Trap");
         vol = Mathf.Clamp(vol,0,1f);
         foreach (var item in sounds)
         {
@@ -116,6 +112,10 @@ public class AudioManager : MonoBehaviour
         foreach (var item in themes)
         {
             item.source.volume = item.volume*vol;
+        }
+        foreach (var item in sources)
+        {
+            item.GetComponent<AudioSource>().volume = vol*.03f;
         }
     }
 }

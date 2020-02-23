@@ -13,7 +13,6 @@ public class LevelLoader : MonoBehaviour
         int nextLevel = SceneManager.GetActiveScene().buildIndex+1;
         
         save.Save(nextLevel);
-        Debug.Log(save.lastLevel);
        StartCoroutine(LoadLevel(nextLevel));
     }
 

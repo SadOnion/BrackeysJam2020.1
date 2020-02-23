@@ -8,6 +8,8 @@ public class MainMenu : MonoBehaviour
 {
     public Button continueButton;
     public GameObject credits;
+    public GameObject main;
+    public GameObject levels;
     public GameSave save;
     private void Start()
     {
@@ -29,10 +31,18 @@ public class MainMenu : MonoBehaviour
     }
     public void Credits()
     {
+        main.SetActive(!main.activeSelf);
+
         credits.SetActive(!credits.activeSelf);
     }
     public void Continue()
     {
-        SceneManager.LoadScene(save.lastLevel);
+        main.SetActive(!main.activeSelf);
+        levels.SetActive(!levels.activeSelf);
+    }
+    public void LoadLevel(int lvl)
+    {
+         AudioManager.instance.PlayNextTheme(lvl);
+        SceneManager.LoadScene(lvl);
     }
 }

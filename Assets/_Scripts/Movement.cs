@@ -13,11 +13,14 @@ namespace GameJam.CharController.Movement
         private protected Rigidbody2D ridBody;
 
         public GroundCheck groundCheck;
-
+        private void Awake()
+        {
+            groundCheck = new GroundCheck(GetComponent<BoxCollider2D>());
+            
+        }
         private void Start()
         {
             ridBody = gameObject.GetComponent<Rigidbody2D>();
-            groundCheck = new GroundCheck(GetComponent<BoxCollider2D>());
         }
 
         /// <summary>

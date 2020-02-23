@@ -8,6 +8,7 @@ public class DialogueHandler : MonoBehaviour
     private Text text;
     private GameObject dialogueBox;
     private Text deathCounterText;
+    public bool dialogueInProgress = false;
     public static int deathCount = 0;
 
     private void Start()
@@ -52,6 +53,7 @@ public class DialogueHandler : MonoBehaviour
 
     public IEnumerator FadeEffect(Text textObj, string dialogueText)
     {
+        dialogueInProgress = true;
         Color colorRef = textObj.color;
         colorRef.a = 0;
         textObj.color = colorRef;
@@ -65,11 +67,13 @@ public class DialogueHandler : MonoBehaviour
         }
 
         yield return new WaitForSeconds(1.5f);
+        dialogueInProgress = false;
         dialogueBox.SetActive(false);
     }
 
     public IEnumerator TypewriterEffect(Text textObj, string dialogueText)
     {
+        dialogueInProgress = true;
         Color colorRef = textObj.color;
         colorRef.a = 1;
         textObj.color = colorRef;
@@ -82,6 +86,7 @@ public class DialogueHandler : MonoBehaviour
         }
 
         yield return new WaitForSeconds(1.5f);
+        dialogueInProgress = false;
         dialogueBox.SetActive(false);
     }
 
