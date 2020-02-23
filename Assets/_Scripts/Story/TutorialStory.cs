@@ -17,6 +17,7 @@ public class TutorialStory : MonoBehaviour
         {
             if (dialogue.dialogueInProgress == false)
             {
+                dialogue.SwitchCharacter(DialogueHandler.Character.Naoki);
                 dialogue.DisplayText("We're here, stay close. \nThis is no place for outsiders like us.\nuse A and D to move, SPACE to jump and S to switch characters.", DialogueHandler.TextAnimation.typewriter);
                 Destroy(collision);
             }
@@ -34,6 +35,7 @@ public class TutorialStory : MonoBehaviour
         {
             if (dialogue.dialogueInProgress == false)
             {
+                dialogue.SwitchCharacter(DialogueHandler.Character.Touka);
                 dialogue.DisplayText("Great, now do it again and pick me up!", DialogueHandler.TextAnimation.typewriter);
                 Destroy(collision);
             }
@@ -42,6 +44,7 @@ public class TutorialStory : MonoBehaviour
         {
             if (dialogue.dialogueInProgress == false)
             {
+                dialogue.SwitchCharacter(DialogueHandler.Character.Touka);
                 dialogue.DisplayText("I've got an ability too, 'Divine Confinement', it freezes time in an area of my choice. I can freeze everything from objects to buttons and other traps! \nPress 'S' to switch and Left Mouse button to use my ability.", DialogueHandler.TextAnimation.typewriter);
                 Destroy(collision);
             }
@@ -50,6 +53,7 @@ public class TutorialStory : MonoBehaviour
         {
             if (dialogue.dialogueInProgress == false)
             {
+                dialogue.SwitchCharacter(DialogueHandler.Character.Touka);
                 dialogue.DisplayText("We did it! Come with me, let's get going. There's more places for us to search!", DialogueHandler.TextAnimation.typewriter);
                 Destroy(collision);
             }

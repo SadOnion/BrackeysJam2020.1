@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e33b7167813f4b141ba31c582dd0bbd3, type: 3}
   m_Name: GameSave
   m_EditorClassIdentifier: 
-  lastLevel: 1
+  lastLevel: 0

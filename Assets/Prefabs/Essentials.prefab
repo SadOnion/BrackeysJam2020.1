@@ -1780,7 +1780,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 202749390844630310}
-        m_MethodName: Quit
+        m_MethodName: LoadMain
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
