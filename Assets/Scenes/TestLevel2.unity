@@ -2222,6 +2222,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2626367234374160874, guid: e663706275bbe8c4fad64acc6764e96a,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 2438827255726874710, guid: 3ff8610e48aa0d147878731707fd3688,
+        type: 3}
+    - target: {fileID: 2626367235290134991, guid: e663706275bbe8c4fad64acc6764e96a,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -124796156926174782, guid: 3ff8610e48aa0d147878731707fd3688,
+        type: 3}
     - target: {fileID: 2626367235699644336, guid: e663706275bbe8c4fad64acc6764e96a,
         type: 3}
       propertyPath: points.Array.size
@@ -2347,6 +2359,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2626367235795909160, guid: e663706275bbe8c4fad64acc6764e96a,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 8693914469809675950, guid: 3ff8610e48aa0d147878731707fd3688,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e663706275bbe8c4fad64acc6764e96a, type: 3}
 --- !u!1001 &1047282394
@@ -14904,6 +14922,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2626367234374160874, guid: e663706275bbe8c4fad64acc6764e96a,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 2438827255726874710, guid: 3ff8610e48aa0d147878731707fd3688,
+        type: 3}
+    - target: {fileID: 2626367235290134991, guid: e663706275bbe8c4fad64acc6764e96a,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -124796156926174782, guid: 3ff8610e48aa0d147878731707fd3688,
+        type: 3}
     - target: {fileID: 2626367235699644336, guid: e663706275bbe8c4fad64acc6764e96a,
         type: 3}
       propertyPath: points.Array.data[0].y
@@ -14979,5 +15009,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2626367235795909160, guid: e663706275bbe8c4fad64acc6764e96a,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 8693914469809675950, guid: 3ff8610e48aa0d147878731707fd3688,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e663706275bbe8c4fad64acc6764e96a, type: 3}

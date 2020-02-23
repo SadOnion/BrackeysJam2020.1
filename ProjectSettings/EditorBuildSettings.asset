@@ -32,4 +32,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/NaraLevel1.unity
     guid: e2043d8d083d9e048b0b606c838adf38
+  - enabled: 1
+    path: Assets/Scenes/PaliLevel3.unity
+    guid: c700e3c3e053c6f4a9cac781109e215d
+  - enabled: 1
+    path: Assets/Scenes/LastScene.unity
+    guid: 0f0235561561bd544a5821a50b43a48c
   m_configObjects: {}

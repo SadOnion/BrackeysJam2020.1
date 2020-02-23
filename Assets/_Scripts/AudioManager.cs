@@ -13,6 +13,7 @@ public class AudioManager : MonoBehaviour
     public Sound[] themes;
     public int newThemeEveryLevels=2;
     int previousThemeNum=0;
+    public float volu=1f;
     private void Awake()
     {
         if (instance == null) instance = this;
@@ -103,6 +104,7 @@ public class AudioManager : MonoBehaviour
     }
     public void ChangeVolume(float vol)
     {
+        volu=vol;
         GameObject[] sources = GameObject.FindGameObjectsWithTag("Trap");
         vol = Mathf.Clamp(vol,0,1f);
         foreach (var item in sounds)

@@ -43,7 +43,6 @@ public class Death : MonoBehaviour
             cameraBehaviour.Zoom(0.25f);
             animationController.Die();
             gameObject.GetComponent<Rigidbody2D>().simulated = false;
-            Debug.Log(cameraBehaviour.zoomAmount);
             yield return new WaitForSeconds(0.025f);
         }
 

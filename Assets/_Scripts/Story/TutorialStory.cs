@@ -25,6 +25,7 @@ public class TutorialStory : MonoBehaviour
         {
             if (dialogue.dialogueInProgress == false)
             {
+                dialogue.SwitchCharacter(DialogueHandler.Character.Touka);
                 dialogue.DisplayText("Up there, use your ability 'Reality Bender' to place a portal somewhere!\nJust click the Left Mouse button where you want to place it.", DialogueHandler.TextAnimation.typewriter);
                 Destroy(collision);
             }

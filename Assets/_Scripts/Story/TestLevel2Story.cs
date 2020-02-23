@@ -13,21 +13,28 @@ public class TestLevel2Story : MonoBehaviour
 
     private IEnumerator DialogueSequence1()
     {
+        dialogue.SwitchCharacter(DialogueHandler.Character.Naoki);
         dialogue.DisplayText("Don't forget your body is very fragile, are you really okay?", DialogueHandler.TextAnimation.typewriter);
         yield return new WaitForSeconds(5f);
+        dialogue.SwitchCharacter(DialogueHandler.Character.Touka);
         dialogue.DisplayText("I'm fine, Don't worry about me! Focus on what's forward", DialogueHandler.TextAnimation.typewriter);
         yield return new WaitForSeconds(5f);
+        dialogue.SwitchCharacter(DialogueHandler.Character.Naoki);
         dialogue.DisplayText("O-okay... sorry.", DialogueHandler.TextAnimation.typewriter);
     }
 
     private IEnumerator DialogueSequence2()
     {
+        dialogue.SwitchCharacter(DialogueHandler.Character.Touka);
         dialogue.DisplayText("What is this place anyway?", DialogueHandler.TextAnimation.typewriter);
         yield return new WaitForSeconds(3.5f);
+        dialogue.SwitchCharacter(DialogueHandler.Character.Naoki);
         dialogue.DisplayText("Who knows... Maybe another world, a parallel one, or even-", DialogueHandler.TextAnimation.typewriter);
         yield return new WaitForSeconds(5f);
+        dialogue.SwitchCharacter(DialogueHandler.Character.Touka);
         dialogue.DisplayText("-Even?", DialogueHandler.TextAnimation.typewriter);
         yield return new WaitForSeconds(3f);
+        dialogue.SwitchCharacter(DialogueHandler.Character.Naoki);
         dialogue.DisplayText("Nothing, forget about it.", DialogueHandler.TextAnimation.typewriter);
     }
 
@@ -37,6 +44,7 @@ public class TestLevel2Story : MonoBehaviour
         {
             if (dialogue.dialogueInProgress == false)
             {
+                dialogue.SwitchCharacter(DialogueHandler.Character.Touka);
                 dialogue.DisplayText("Woah, what's going on??", DialogueHandler.TextAnimation.typewriter);
                 Destroy(collision);
             }

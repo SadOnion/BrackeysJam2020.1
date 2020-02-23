@@ -10,6 +10,8 @@ public class DialogueHandler : MonoBehaviour
     private Text deathCounterText;
     public bool dialogueInProgress = false;
     public static int deathCount = 0;
+    public GameObject boyPortait;
+    public GameObject girlPortait;
 
     private void Start()
     {
@@ -25,6 +27,12 @@ public class DialogueHandler : MonoBehaviour
         none = 0,
         fade = 1,
         typewriter = 2
+    }
+
+    public enum Character
+    {
+        Touka = 0,
+        Naoki = 1
     }
 
     public void AddDeath()
@@ -47,6 +55,21 @@ public class DialogueHandler : MonoBehaviour
                 break;
             case TextAnimation.typewriter:
                 StartCoroutine(TypewriterEffect(text, dialogueText));
+                break;
+        }
+    }
+
+    public void SwitchCharacter(Character character)
+    {
+        switch (character)
+        {
+            case Character.Touka:
+                girlPortait.SetActive(true);
+                boyPortait.SetActive(false);
+                break;
+            case Character.Naoki:
+                girlPortait.SetActive(false);
+                boyPortait.SetActive(true);
                 break;
         }
     }

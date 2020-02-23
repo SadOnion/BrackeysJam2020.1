@@ -17,6 +17,7 @@ public class PaliLevelStory : MonoBehaviour
         {
             if (dialogue.dialogueInProgress == false)
             {
+                dialogue.SwitchCharacter(DialogueHandler.Character.Touka);
                 dialogue.DisplayText("*pant* Hey, Help me up!", DialogueHandler.TextAnimation.typewriter);
                 Destroy(collision);
             }
@@ -25,6 +26,7 @@ public class PaliLevelStory : MonoBehaviour
         {
             if (dialogue.dialogueInProgress == false)
             {
+                dialogue.SwitchCharacter(DialogueHandler.Character.Naoki);
                 dialogue.DisplayText("I wonder what this did...", DialogueHandler.TextAnimation.typewriter);
                 Destroy(collision);
             }
@@ -33,6 +35,7 @@ public class PaliLevelStory : MonoBehaviour
         {
             if (dialogue.dialogueInProgress == false)
             {
+                dialogue.SwitchCharacter(DialogueHandler.Character.Naoki);
                 dialogue.DisplayText("Watch out for the saw!", DialogueHandler.TextAnimation.typewriter);
                 Destroy(collision);
             }
@@ -41,7 +44,8 @@ public class PaliLevelStory : MonoBehaviour
         {
             if (dialogue.dialogueInProgress == false)
             {
-                dialogue.DisplayText("This place is weird but... A good kind of weird.", DialogueHandler.TextAnimation.typewriter);
+                dialogue.SwitchCharacter(DialogueHandler.Character.Touka);
+                dialogue.DisplayText("You know, this place is weird but... A good kind of weird.", DialogueHandler.TextAnimation.typewriter);
                 Destroy(collision);
             }
         }
@@ -49,6 +53,7 @@ public class PaliLevelStory : MonoBehaviour
         {
             if (dialogue.dialogueInProgress == false)
             {
+                dialogue.SwitchCharacter(DialogueHandler.Character.Naoki);
                 dialogue.DisplayText("More of these, be careful.", DialogueHandler.TextAnimation.typewriter);
                 Destroy(collision);
             }
@@ -57,6 +62,7 @@ public class PaliLevelStory : MonoBehaviour
         {
             if (dialogue.dialogueInProgress == false)
             {
+                dialogue.SwitchCharacter(DialogueHandler.Character.Touka);
                 dialogue.DisplayText("W-we did it! But, why do I feel... so sleepy?", DialogueHandler.TextAnimation.typewriter);
                 Destroy(collision);
             }

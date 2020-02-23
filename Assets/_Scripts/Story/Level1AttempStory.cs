@@ -15,6 +15,7 @@ public class Level1AttempStory : MonoBehaviour
     private IEnumerator Storyboard()
     {
         yield return new WaitForSeconds(1);
+        dialogue.SwitchCharacter(DialogueHandler.Character.Touka);
         dialogue.DisplayText("Great another weird place, are these saws? I better watch out!", DialogueHandler.TextAnimation.typewriter);
     }
 
@@ -22,16 +23,19 @@ public class Level1AttempStory : MonoBehaviour
     {
         if (collision.name == "dt1")
         {
+            dialogue.SwitchCharacter(DialogueHandler.Character.Naoki);
             dialogue.DisplayText("Hang in there, sis!", DialogueHandler.TextAnimation.typewriter);
             Destroy(collision);
         }
         else if (collision.name == "dt2")
         {
-            dialogue.DisplayText("Hang in there, sis!", DialogueHandler.TextAnimation.typewriter);
+            dialogue.SwitchCharacter(DialogueHandler.Character.Naoki);
+            dialogue.DisplayText("Just a little more", DialogueHandler.TextAnimation.typewriter);
             Destroy(collision);
         }
         else if (collision.name == "dt3")
         {
+            dialogue.SwitchCharacter(DialogueHandler.Character.Touka);
             dialogue.DisplayText("*sigh* Thought I was done for...", DialogueHandler.TextAnimation.typewriter);
             Destroy(collision);
         }

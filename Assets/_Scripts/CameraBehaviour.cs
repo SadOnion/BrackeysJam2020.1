@@ -36,6 +36,5 @@ public class CameraBehaviour : MonoBehaviour
     public void Zoom(float amount) // By Beyluta sowy Onion :`(
     {
         gameObject.GetComponent<Camera>().fieldOfView = gameObject.GetComponent<Camera>().fieldOfView - amount;
-        Debug.Log("Working");
     }
 }
