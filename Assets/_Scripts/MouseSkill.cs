@@ -25,12 +25,10 @@ public class MouseSkill : MonoBehaviour
 
         Vector2 mousePos = GetWorldPositionOnPlane(Input.mousePosition, 0);
         Vector2 player = CharacterSwitchHandler.newTarget.transform.position;
-        Collider2D point = Physics2D.OverlapCircle(mousePos, .01f);
-        if (point == null)
-        {
-            Vector2 raydir = mousePos - player;
-            float range = Vector2.Distance(player, mousePos);
-            RaycastHit2D rayinfo = Physics2D.Raycast(player, raydir, range, wallsLayer.value);
+        
+        Vector2 raydir = mousePos - player;
+        float range = Vector2.Distance(player, mousePos);
+        RaycastHit2D rayinfo = Physics2D.Raycast(player, raydir, range, wallsLayer.value);
             if (rayinfo.collider == null)
             {
                 Collider2D[] col = Physics2D.OverlapBoxAll(mousePos, Vector2.one * 2f, 0);
@@ -56,7 +54,7 @@ public class MouseSkill : MonoBehaviour
 
             }
 
-        }
+        
 
     }
     public void PlaceFreezeArea()
