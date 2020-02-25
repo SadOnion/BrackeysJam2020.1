@@ -47,7 +47,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35126700f48d775489eea27166c4c466, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mask: {fileID: 4084679041890217458}
   spawnPoint: {fileID: 8170471600353306549}
   linkedPortal: {fileID: 0}
   transitionSpeed: 2.5
@@ -236,7 +235,7 @@ PrefabInstance:
     - target: {fileID: 1511032848602568414, guid: c209b28d40ecef44f865559df326d758,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1511032848602568414, guid: c209b28d40ecef44f865559df326d758,
         type: 3}
@@ -258,22 +257,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 11
       objectReference: {fileID: 0}
-    - target: {fileID: 1511032848602568415, guid: c209b28d40ecef44f865559df326d758,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c209b28d40ecef44f865559df326d758, type: 3}
 --- !u!4 &3257990863324857452 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 99431866335772481, guid: c209b28d40ecef44f865559df326d758,
-    type: 3}
-  m_PrefabInstance: {fileID: 3195292583110540077}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &4084679041890217458 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1511032848602568415, guid: c209b28d40ecef44f865559df326d758,
     type: 3}
   m_PrefabInstance: {fileID: 3195292583110540077}
   m_PrefabAsset: {fileID: 0}

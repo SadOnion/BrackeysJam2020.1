@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class Portal : MonoBehaviour
 {
-    [SerializeField]GameObject mask;
     [SerializeField]GameObject spawnPoint;
     [SerializeField]Portal linkedPortal;
     [SerializeField] float transitionSpeed;
@@ -32,9 +31,6 @@ public class Portal : MonoBehaviour
                         collision.isTrigger=true;
                         body.velocity  = -transform.up*transitionSpeed;
                         passIn=false;
-        linkedPortal.passIn=false;
-
-                        mask.SetActive(true);
                     }
                     else if (body.bodyType == RigidbodyType2D.Kinematic && passOut)
                     {
@@ -42,10 +38,7 @@ public class Portal : MonoBehaviour
                          body.AddForce(transform.up*exitThrowPower*Mathf.Sqrt(body.gravityScale));
                          MouseSkill.canUseSkill=true;
                          passIn=false;
-                        linkedPortal.passIn=false;
-
                          passOut=false;
-                        
                     }
                 
                      SpriteRenderer sr = collision.gameObject.GetComponent<SpriteRenderer>();
@@ -71,9 +64,7 @@ public class Portal : MonoBehaviour
                 {
                 if(body.bodyType == RigidbodyType2D.Kinematic)
                 {
-                    linkedPortal.mask.SetActive(true);
                     Teleport(body);
-                    if(linkedPortal.mask.activeSelf==false)mask.SetActive(false);
                 }
                 else  if(body.bodyType == RigidbodyType2D.Dynamic)
                 {
@@ -82,7 +73,6 @@ public class Portal : MonoBehaviour
                     anim.SetTrigger("Die");
                     linkedPortal.anim.SetTrigger("Die");
                     collision.isTrigger=false;
-                       if(linkedPortal.mask.activeSelf==false) mask.SetActive(false);
 
                 }
                 }
@@ -111,7 +101,6 @@ public class Portal : MonoBehaviour
     public void Die()
     {
         passIn=false;
-        linkedPortal.passIn=false;
     }
 }
 

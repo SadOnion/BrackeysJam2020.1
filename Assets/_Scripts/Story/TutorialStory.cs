@@ -45,7 +45,7 @@ public class TutorialStory : MonoBehaviour
             if (dialogue.dialogueInProgress == false)
             {
                 dialogue.SwitchCharacter(DialogueHandler.Character.Touka);
-                dialogue.DisplayText("I've got an ability too, 'Divine Confinement', it freezes time in an area of my choice. I can freeze everything from objects to buttons and other traps! \nPress 'S' to switch and Left Mouse button to use it.", DialogueHandler.TextAnimation.typewriter);
+                dialogue.DisplayText("I've got an ability too, 'Divine Confinement', it freezes time in an area of my choice. I can freeze everything from objects to buttons and other traps! \nPress 'S' to switch and Left Mouse button to use my ability.", DialogueHandler.TextAnimation.typewriter);
                 Destroy(collision);
             }
         }
