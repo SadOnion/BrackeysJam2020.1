@@ -6,16 +6,16 @@ Credits to people who created the game during those 7 days
 Beyluta
 Writer, Assist Programmer
 
-Sad Onion
+[Sad Onion](https://sadonion.github.io/PortfolioBWA/)
 Main Programmer, Levels
 
-Palinus
+[Palinus](https://palinus.graphics/)
 Artist, Levels
 
-Narasu
+[Narasu](https://soundcloud.com/narasuruwu)
 Music, SFX, Levels
 
-Yoshinoes
+[Yoshinoes](https://yoshi.moe/)
 Levels
 
 you can play game here: https://narasuruwu.itch.io/crystillya-boundless
